@@ -110,6 +110,7 @@ class UserExpenseCell: UITableViewCell {
     }
     
     public func isPayeeSelected() -> Bool {
+        //TODO: This won't work in case of re-use. I added 50 users and buttons get selected randomly as a cell is dequeued. We need to track this state outside.
         return payeeButton.isSelected
     }
     public func isSharerSelected() -> Bool {

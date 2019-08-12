@@ -15,8 +15,10 @@ enum ExpenseManagerError: Error {
 /// hold all expenses
 struct ExpenseManager {
     var expenses: Set<Expense>
+    //TODO: Should available users be in a class of its own. Separate concern and extensible in future.
     var availableUsers: Set<User> /// check if NSOrderedSet is feasible later.. to extra ordererdUser
     
+    //TODO: OrderedUsers is called everytime on cellForRow as we scroll. This should be called on didSet of availableUsers.
     var ordererdUsers: [User] {
         return Array(availableUsers.sorted(by: { (lhs, rhs) -> Bool in
             return lhs.name < rhs.name
@@ -24,7 +26,7 @@ struct ExpenseManager {
     }
 }
 
-
+//TODO: Do we need this extension. Can this be part of the struct itself.
 extension ExpenseManager {
     
     func netExpense(for user: User) throws -> Double {

@@ -8,6 +8,7 @@
 
 import Foundation
 
+//TODO: Should this be in ExpenseManager class itself for easy readibility
 protocol AddExpenseProtocol {
     mutating func addExpense(_ expense: Expense)
     

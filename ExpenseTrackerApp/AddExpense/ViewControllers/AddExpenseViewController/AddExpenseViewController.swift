@@ -11,10 +11,13 @@ import UIKit
 class AddExpenseViewController: UIViewController {
 
     // Managers
+    //TODO: Can this be a private let
     internal var expenseManager: ExpenseManager!
     
     /// UIView
     private var tableView: UITableView
+    //TODO: Can expenseInputView type be just ExpenseInputProtocol since we are not using any UIView attributes.
+    //TODO: No need to call .init for initialization. We can just do AddExpenseHeaderView(frame: .zero). .init has been used in other places too.
     internal var expenseInputView: (UIView & ExpenseInputProtocol) = AddExpenseHeaderView.init(frame: .zero)
     
     init(expenseManager: ExpenseManager) {
@@ -22,8 +25,6 @@ class AddExpenseViewController: UIViewController {
         barAppearance.barTintColor = UIColor.blue
         barAppearance.tintColor = UIColor.white
         barAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
-        
         
         self.expenseManager = expenseManager
         self.tableView = UITableView.init(frame: .zero, style: .grouped)
@@ -56,6 +57,7 @@ class AddExpenseViewController: UIViewController {
         setupTitleView()
     }
     
+    //TODO:  We can use storyboard more instead of creating controls in code. I see this pattern in your coding style.
     private func setupTableView() {
         tableView.tableFooterView = UIView()
         
@@ -77,7 +79,8 @@ class AddExpenseViewController: UIViewController {
             NSLayoutConstraint.init(item: self.tableView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0),
             ])
     }
-    
+
+    //TODO:  We can use storyboard more instead of creating controls in code. I see this pattern in your coding style. It leads to less code in VC.
     private func setupBottomBar() {
         self.navigationController?.toolbar.barTintColor = UIColor.blue
         
@@ -94,6 +97,10 @@ class AddExpenseViewController: UIViewController {
     @objc func addExpense(_ sender: UIButton) {
         
         /// validate input later...
+        //TODO: Can we have one method in protocol that gives us all data as a named Tuple. We can avoid multiple calls to expenseInputView and the lines of code will be less.
+
+        //TODO: should we break it down into a small validation function.
+        //TODO: Should this logic be in ExpenseManager for better testability and leaner VC.
         guard let expenseName = expenseInputView.getExpenseName() else {
             //// throw error later...
             self.showError(error: SimpleError(errorTitle: "ExpenseName is invalid", errorMessage: "Check Name of the expense"))
@@ -133,6 +140,7 @@ class AddExpenseViewController: UIViewController {
                 return false
             }
             
+            //TODO: user selection state should be tracked separately and not in the cell.
             return userExpenseCell.isSharerSelected()
             }.map { (user) -> User in
               return  user.element
