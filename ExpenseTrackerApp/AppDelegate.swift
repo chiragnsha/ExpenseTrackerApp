@@ -12,9 +12,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    /// for holding strong-references for now, move to appDeepdencies later
-    var expenseManager: ExpenseManager!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -24,11 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         
         /// load app-dependencies
-        /// empty expenses for now..
-        expenseManager = ExpenseManager(expenses: Set<Expense>.init())
         
-        
-        let addExpenseViewController = AddExpenseViewController(expenseManager: expenseManager, userManager: UserManager())
+        let addExpenseViewController = AddExpenseViewController(expenseManager: ExpenseManager(), userManager: UserManager())
         
         let rootViewController = UINavigationController.init(rootViewController: addExpenseViewController)
         

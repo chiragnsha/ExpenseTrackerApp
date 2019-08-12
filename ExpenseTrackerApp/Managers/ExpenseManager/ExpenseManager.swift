@@ -14,7 +14,7 @@ enum ExpenseManagerError: Error {
 
 /// hold all expenses
 struct ExpenseManager {
-    var expenses: Set<Expense>
+    var expenses: Set<Expense> = Set<Expense>()
 }
 
 
