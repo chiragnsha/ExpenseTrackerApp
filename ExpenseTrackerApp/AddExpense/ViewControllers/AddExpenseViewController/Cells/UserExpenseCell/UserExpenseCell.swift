@@ -40,9 +40,15 @@ class UserExpenseCell: UITableViewCell {
         sharerButton.addTarget(self, action: #selector(sharerButtonAction(_:)), for: .touchUpInside)
     }
     
-    func configure(for user: User) {
+    func configure(for user: User, asPayee isPayee: Bool, asSharer isSharer: Bool) {
         self.userLabel.text = user.name
+        
+        self.payeeButton.isSelected = isPayee
+        self.sharerButton.isSelected = isSharer
     }
+    
+    ///ToAsk: Should I break the aboe method as three-seperate methods like following or the above one is enough?
+    func configureUserAsPayee() { }
     
     @objc private func payeeButtonAction(_ sender: UIButton) {
         print("payeeButtonAction")

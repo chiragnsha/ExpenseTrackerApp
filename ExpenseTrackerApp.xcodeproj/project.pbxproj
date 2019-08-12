@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F01BF0D2301DC120014B73F /* AddExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F01BF0C2301DC120014B73F /* AddExpenseViewModel.swift */; };
 		6F4FDA1322FE87A600D7086F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA1222FE87A600D7086F /* AppDelegate.swift */; };
 		6F4FDA1522FE87A600D7086F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA1422FE87A600D7086F /* ViewController.swift */; };
 		6F4FDA1822FE87A600D7086F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F4FDA1622FE87A600D7086F /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F01BF0C2301DC120014B73F /* AddExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewModel.swift; sourceTree = "<group>"; };
 		6F4FDA0F22FE87A600D7086F /* ExpenseTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4FDA1222FE87A600D7086F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F4FDA1422FE87A600D7086F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F01BF0B2301DBF70014B73F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6F01BF0C2301DC120014B73F /* AddExpenseViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		6F4FDA0622FE87A600D7086F = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 		6F4FDA2422FE87D100D7086F /* AddExpense */ = {
 			isa = PBXGroup;
 			children = (
+				6F01BF0B2301DBF70014B73F /* ViewModel */,
 				6F4FDA5522FE9F2400D7086F /* Protocols */,
 				6F4FDA3B22FE8C9200D7086F /* Logic */,
 				6F4FDA3A22FE8C0000D7086F /* Views */,
@@ -407,6 +418,7 @@
 				6F4FDA6522FEA3FF00D7086F /* ExpenseDetailViewController.swift in Sources */,
 				6F4FDA3F22FE8CD100D7086F /* AddExpenseViewController+UITableViewDataSource.swift in Sources */,
 				D18C515723012D230049F05F /* UserManager.swift in Sources */,
+				6F01BF0D2301DC120014B73F /* AddExpenseViewModel.swift in Sources */,
 				6F4FDA4122FE8D0B00D7086F /* AddExpenseHeaderView.swift in Sources */,
 				6F4FDA6022FEA11A00D7086F /* ExpenseCreatorProtocol.swift in Sources */,
 				6F4FDA6722FF416100D7086F /* UIImage.swift in Sources */,
@@ -561,7 +573,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ExpenseTrackerApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -581,7 +593,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ExpenseTrackerApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

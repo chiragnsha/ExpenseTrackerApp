@@ -26,7 +26,7 @@ extension AddExpenseViewController: UITableViewDataSource {
             
             /// user indexOf etc... if let here...
             let user = self.userManager.orderedUsers[indexPath.row]
-            userExpenseCell.configure(for: user)
+            userExpenseCell.configure(for: user, asPayee: (self.addExpenseViewModel.payee == user), asSharer: self.addExpenseViewModel.sharers.contains(user))
         }
         
         return tableViewCell
@@ -40,6 +40,4 @@ extension AddExpenseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return expenseInputView
     }
-    
-    
 }

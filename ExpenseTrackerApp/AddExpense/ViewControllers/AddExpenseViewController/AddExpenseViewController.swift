@@ -14,6 +14,9 @@ class AddExpenseViewController: UIViewController {
     internal var expenseManager: ExpenseManager
     internal let userManager: UserManager
     
+    ///ToAsk: Should have AddExpenseViewModel or UserManager take up the responsibility of tracking Payy/Sharers?
+    internal var addExpenseViewModel: AddExpenseViewModel = AddExpenseViewModel()
+    
     /// UIView
     private var tableView: UITableView
     internal var expenseInputView: (UIView & ExpenseInputProtocol) = AddExpenseHeaderView(frame: .zero)
@@ -29,6 +32,17 @@ class AddExpenseViewController: UIViewController {
         self.tableView = UITableView.init(frame: .zero, style: .grouped)
         
         super.init(nibName: nil, bundle: nil)
+        
+        ///ToAsk: Compiler threw an error: saying
+        // Immutable value 'self.addExpenseViewModel' may only be initialized once,
+        // Should I have a setdidChangePayee((User?) -> ()) setter in the viewmodel or make addExpenseViewModel into var(since VM are prone to changes)
+        self.addExpenseViewModel.didChangePayee = { (user) in
+            guard let indexPathsForVisibleRows = self.tableView.indexPathsForVisibleRows else {
+                return
+            }
+            
+            self.tableView.reloadRows(at: indexPathsForVisibleRows, with: .none)
+        }
     }
     
     
@@ -41,7 +55,6 @@ class AddExpenseViewController: UIViewController {
 
         setupTitleView()
         setupTableView()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,35 +109,13 @@ class AddExpenseViewController: UIViewController {
         let data = expenseInputView.getData()
         
         /// get payee
-
-        guard let payee = self.userManager.orderedUsers.enumerated().first(where: { (user) -> Bool in
-            guard let userExpenseCell = tableView.cellForRow(at: IndexPath.init(row: user.offset, section: 0)) as? UserExpenseCell else {
-                return false
-            }
-            
-            return userExpenseCell.isPayeeSelected()
-        })?.element else {
+        guard let payee = self.addExpenseViewModel.payee else {
             self.showError(error: SimpleError(errorTitle: "Expense Payee is invalid", errorMessage: "Check Payee of the expense"))
             
             return
         }
         
-        
-//        ///  mock expense...
-//        guard let userA = self.expenseManager.ordererdUsers.first,
-//            let userTwo = self.expenseManager.ordererdUsers.last else {
-//            return
-//        }
-        
-        let sharers = self.userManager.orderedUsers.enumerated().filter { (user) -> Bool in
-            guard let userExpenseCell = tableView.cellForRow(at: IndexPath.init(row: user.offset, section: 0)) as? UserExpenseCell else {
-                return false
-            }
-            
-            return userExpenseCell.isSharerSelected()
-            }.map { (user) -> User in
-              return  user.element
-        }
+        let sharers = self.addExpenseViewModel.sharers
         
         do {
             try expenseManager.addExpense(data.expenseDesc,
@@ -160,5 +151,3 @@ class AddExpenseViewController: UIViewController {
         }))
     }
 }
-
-

@@ -49,6 +49,10 @@ extension ExpenseManager: AddExpenseProtocol {
         guard amount > 0 else {
             throw SimpleError(errorTitle: "ExpenseAmount is invalid", errorMessage: "Check amount of the expense")
         }
+        
+        guard involvedUsers.count > 0 else {
+            throw SimpleError(errorTitle: "Invalid number of expense sharers", errorMessage: "Check the number of sharers of the expense")
+        }
 
         let expense = Expense(expenseName: desc, expenseAmount: amount, payee: payee, involvedUsers: involvedUsers)
         self.expenses.insert(expense)

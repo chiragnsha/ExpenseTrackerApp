@@ -14,6 +14,7 @@ struct UserManager {
     public private(set) var allUsers: Set<User> = Set<User>() {
         didSet {
             orderedUsers = allUsers.sorted(by: { (user1, user2) -> Bool in
+                ///ToAsk: Nice TIL, is there any particular term that defines this util-pattern? Local-Closures
                 let op: (User) -> Int = { user in
                     return Int(String(user.name.split(separator: " ").last!))!
                 }
