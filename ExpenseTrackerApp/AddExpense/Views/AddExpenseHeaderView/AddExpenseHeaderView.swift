@@ -45,3 +45,9 @@ class AddExpenseHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+extension AddExpenseHeaderView: ExpenseInputProtocol {
+    func getData() -> (amount: Double?, expenseDesc: String?) {
+        return (Double(expenseAmountTextField.text ?? ""), expenseNameTextField.text)
+    }
+}

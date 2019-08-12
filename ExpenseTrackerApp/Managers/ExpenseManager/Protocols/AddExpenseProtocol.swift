@@ -10,5 +10,4 @@ import Foundation
 
 protocol AddExpenseProtocol {
     mutating func addExpense(_ expense: Expense)
-    
 }
