@@ -11,7 +11,7 @@ import UIKit
 class AddExpenseViewController: UIViewController {
 
     // Managers
-    //TODO: Can this be a private let
+    //TODO: This can be a let and no need to force unwrap since let's can be initialized from constructor.
     internal var expenseManager: ExpenseManager!
     
     /// UIView
