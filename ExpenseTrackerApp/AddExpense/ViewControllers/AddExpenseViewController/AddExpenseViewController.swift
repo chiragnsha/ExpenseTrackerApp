@@ -95,18 +95,6 @@ class AddExpenseViewController: UIViewController {
         
         let data = expenseInputView.getData()
         
-        /// validate input later...
-        guard let expenseName = data.expenseDesc else {
-            //// throw error later...
-            self.showError(error: SimpleError(errorTitle: "ExpenseName is invalid", errorMessage: "Check Name of the expense"))
-            return
-        }
-        
-        guard let expenseAmount = data.amount else {
-            self.showError(error: SimpleError(errorTitle: "ExpenseAmount is invalid", errorMessage: "Check amount of the expense"))
-            return
-        }
-        
         /// get payee
 
         guard let payee = self.userManager.orderedUsers.enumerated().first(where: { (user) -> Bool in
@@ -138,13 +126,16 @@ class AddExpenseViewController: UIViewController {
               return  user.element
         }
         
-        
-        let expense = Expense.init(expenseID: UUID.init(), expenseName: expenseName, expenseAmount: expenseAmount, payee: payee, involvedUsers: Set.init(sharers))
-        
-        self.expenseManager.addExpense(expense)
-        
-        let netExpense = try! self.expenseManager.netExpense(for: payee)
-        print(netExpense)
+        do {
+            try expenseManager.addExpense(data.expenseDesc,
+                                               amount: data.amount,
+                                               payee: payee,
+                                               involvedUsers: Set(sharers))
+            let netExpense = try expenseManager.netExpense(for: payee)
+            print(netExpense)
+        } catch {
+            print(error)
+        }
     }
     
     private func setupTitleView() {

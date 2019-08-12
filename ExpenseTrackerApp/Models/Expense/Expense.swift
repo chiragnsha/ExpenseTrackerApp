@@ -9,7 +9,7 @@
 import Foundation
 
 struct Expense {
-    var expenseID: UUID
+    let expenseID: UUID = UUID()
     
     var expenseName: String
     var expenseAmount: Double

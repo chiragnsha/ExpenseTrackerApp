@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ExpenseInputProtocol {
-    func getData() -> (amount: Double?, expenseDesc: String?)
+    func getData() -> (amount: Double, expenseDesc: String)
 }

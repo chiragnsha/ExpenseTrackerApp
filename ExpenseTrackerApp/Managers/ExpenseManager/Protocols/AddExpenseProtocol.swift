@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AddExpenseProtocol {
-    mutating func addExpense(_ expense: Expense)
+    mutating func addExpense(_ desc: String, amount: Double, payee: User, involvedUsers: Set<User>) throws
 }

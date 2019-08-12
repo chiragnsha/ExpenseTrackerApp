@@ -47,7 +47,7 @@ class AddExpenseHeaderView: UIView {
 }
 
 extension AddExpenseHeaderView: ExpenseInputProtocol {
-    func getData() -> (amount: Double?, expenseDesc: String?) {
-        return (Double(expenseAmountTextField.text ?? ""), expenseNameTextField.text)
+    func getData() -> (amount: Double, expenseDesc: String) {
+        return (Double(expenseAmountTextField.text ?? "") ?? 0, expenseNameTextField.text ?? "")
     }
 }

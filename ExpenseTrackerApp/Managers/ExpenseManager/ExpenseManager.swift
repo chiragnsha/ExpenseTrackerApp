@@ -40,10 +40,17 @@ struct ExpenseManager {
 
 extension ExpenseManager: AddExpenseProtocol {
     
-    mutating func addExpense(_ expense: Expense) {
+    mutating func addExpense(_ desc: String, amount: Double, payee: User, involvedUsers: Set<User>) throws {
         /// validate expense
-        /// implement throws
+        guard !desc.isEmpty else {
+            throw SimpleError(errorTitle: "ExpenseName is invalid", errorMessage: "Check Name of the expense")
+        }
         
+        guard amount > 0 else {
+            throw SimpleError(errorTitle: "ExpenseAmount is invalid", errorMessage: "Check amount of the expense")
+        }
+
+        let expense = Expense(expenseName: desc, expenseAmount: amount, payee: payee, involvedUsers: involvedUsers)
         self.expenses.insert(expense)
     }
 }
