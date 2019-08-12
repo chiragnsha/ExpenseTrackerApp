@@ -11,8 +11,7 @@ import UIKit
 
 extension AddExpenseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return expenseManager.availableUsers.count
+        return userManager.orderedUsers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -26,7 +25,7 @@ extension AddExpenseViewController: UITableViewDataSource {
             userExpenseCell.configureView()
             
             /// user indexOf etc... if let here...
-            let user = self.expenseManager.ordererdUsers[indexPath.row]
+            let user = self.userManager.orderedUsers[indexPath.row]
             userExpenseCell.configure(for: user)
         }
         

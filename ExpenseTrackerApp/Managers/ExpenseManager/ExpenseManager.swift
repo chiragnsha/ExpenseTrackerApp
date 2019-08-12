@@ -15,13 +15,6 @@ enum ExpenseManagerError: Error {
 /// hold all expenses
 struct ExpenseManager {
     var expenses: Set<Expense>
-    var availableUsers: Set<User> /// check if NSOrderedSet is feasible later.. to extra ordererdUser
-    
-    var ordererdUsers: [User] {
-        return Array(availableUsers.sorted(by: { (lhs, rhs) -> Bool in
-            return lhs.name < rhs.name
-        }))
-    }
 }
 
 

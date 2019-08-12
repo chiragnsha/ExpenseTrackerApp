@@ -12,16 +12,18 @@ import UIKit
 class ExpenseDetailViewController: UIViewController {
     ///
     private var expenseManager: ExpenseManager!
+    private let userManager: UserManager
     
     internal var tableView: UITableView = UITableView.init(frame: .zero)
     
-    init(expenseManager: ExpenseManager) {
+    init(expenseManager: ExpenseManager, userManager: UserManager = UserManager()) {
     
         self.expenseManager = expenseManager
+        self.userManager = userManager
         
         super.init(nibName: nil, bundle: nil)
         
-        self.expenseManager.ordererdUsers.forEach { (user) in
+        self.userManager.allUsers.forEach { (user) in
             if let userNetExpense = try? self.expenseManager.netExpense(for: user) {
                 print(userNetExpense)
             }

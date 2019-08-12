@@ -16,23 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// for holding strong-references for now, move to appDeepdencies later
     var expenseManager: ExpenseManager!
     
-    lazy var users: Set<User> = {
-      var availableUsers = Set<User>.init()
-        
-        let userA = User.init(ID: UUID.init(), name: "User A")
-        let userB = User.init(ID: UUID.init(), name: "User B")
-        let userC = User.init(ID: UUID.init(), name: "User C")
-        let userD = User.init(ID: UUID.init(), name: "User D")
-        
-        availableUsers.insert(userA)
-        availableUsers.insert(userB)
-        availableUsers.insert(userC)
-        availableUsers.insert(userB)
-        
-        return availableUsers
-    }()
-
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -42,9 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         /// load app-dependencies
         /// empty expenses for now..
-        expenseManager = ExpenseManager(expenses: Set<Expense>.init(), availableUsers: users)
+        expenseManager = ExpenseManager(expenses: Set<Expense>.init())
         
-        let addExpenseViewController = AddExpenseViewController.init(expenseManager: expenseManager)
+        
+        let addExpenseViewController = AddExpenseViewController(expenseManager: expenseManager, userManager: UserManager())
         
         let rootViewController = UINavigationController.init(rootViewController: addExpenseViewController)
         

@@ -34,6 +34,7 @@
 		6F4FDA6522FEA3FF00D7086F /* ExpenseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA6422FEA3FF00D7086F /* ExpenseDetailViewController.swift */; };
 		6F4FDA6722FF416100D7086F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA6622FF416100D7086F /* UIImage.swift */; };
 		6F4FDA6A22FF45F700D7086F /* SimpleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA6922FF45F700D7086F /* SimpleError.swift */; };
+		D18C515723012D230049F05F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C515623012D230049F05F /* UserManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		6F4FDA6422FEA3FF00D7086F /* ExpenseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetailViewController.swift; sourceTree = "<group>"; };
 		6F4FDA6622FF416100D7086F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		6F4FDA6922FF45F700D7086F /* SimpleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleError.swift; sourceTree = "<group>"; };
+		D18C515623012D230049F05F /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				6F4FDA2F22FE899D00D7086F /* ExpenseManager */,
+				D18C515623012D230049F05F /* UserManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				6F4FDA6522FEA3FF00D7086F /* ExpenseDetailViewController.swift in Sources */,
 				6F4FDA3F22FE8CD100D7086F /* AddExpenseViewController+UITableViewDataSource.swift in Sources */,
 				6F4FDA5E22FEA0B700D7086F /* ExpenseManager+AddExpenseProtocol.swift in Sources */,
+				D18C515723012D230049F05F /* UserManager.swift in Sources */,
 				6F4FDA4122FE8D0B00D7086F /* AddExpenseHeaderView.swift in Sources */,
 				6F4FDA6022FEA11A00D7086F /* ExpenseCreatorProtocol.swift in Sources */,
 				6F4FDA6722FF416100D7086F /* UIImage.swift in Sources */,

@@ -13,19 +13,20 @@ class AddExpenseViewController: UIViewController {
     // Managers
     internal var expenseManager: ExpenseManager!
     
+    internal let userManager: UserManager
+    
     /// UIView
     private var tableView: UITableView
     internal var expenseInputView: (UIView & ExpenseInputProtocol) = AddExpenseHeaderView.init(frame: .zero)
     
-    init(expenseManager: ExpenseManager) {
+    init(expenseManager: ExpenseManager, userManager: UserManager) {
         let barAppearance = UINavigationBar.appearance()
         barAppearance.barTintColor = UIColor.blue
         barAppearance.tintColor = UIColor.white
         barAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
-        
-        
         self.expenseManager = expenseManager
+        self.userManager = userManager
         self.tableView = UITableView.init(frame: .zero, style: .grouped)
         
         super.init(nibName: nil, bundle: nil)
@@ -109,7 +110,7 @@ class AddExpenseViewController: UIViewController {
         
         /// get payee
 
-        guard let payee = self.expenseManager.ordererdUsers.enumerated().first(where: { (user) -> Bool in
+        guard let payee = self.userManager.orderedUsers.enumerated().first(where: { (user) -> Bool in
             guard let userExpenseCell = tableView.cellForRow(at: IndexPath.init(row: user.offset, section: 0)) as? UserExpenseCell else {
                 return false
             }
@@ -128,7 +129,7 @@ class AddExpenseViewController: UIViewController {
 //            return
 //        }
         
-        let sharers = self.expenseManager.ordererdUsers.enumerated().filter { (user) -> Bool in
+        let sharers = self.userManager.orderedUsers.enumerated().filter { (user) -> Bool in
             guard let userExpenseCell = tableView.cellForRow(at: IndexPath.init(row: user.offset, section: 0)) as? UserExpenseCell else {
                 return false
             }
