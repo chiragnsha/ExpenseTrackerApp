@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     /// for holding strong-references for now, move to appDeepdencies later
+    //TODO: Should this be force unwrapped. Do we need this variable.
     var expenseManager: ExpenseManager!
     
     lazy var users: Set<User> = {
