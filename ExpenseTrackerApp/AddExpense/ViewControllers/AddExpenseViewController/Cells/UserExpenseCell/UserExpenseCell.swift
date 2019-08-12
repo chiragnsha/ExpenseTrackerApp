@@ -14,6 +14,9 @@ class UserExpenseCell: UITableViewCell {
     private var payeeButton: UIButton
     private var sharerButton: UIButton
     
+    public var didTogglePayee: ((UserExpenseCell, Bool) -> ())? = nil
+    public var didToggleSharer: ((UserExpenseCell, Bool) -> ())? = nil
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         ///ToAsk: I generally follow .init() pattern for quick-constructor readability reference, with super.init(...) as the source/reference point for this pattern
@@ -52,19 +55,21 @@ class UserExpenseCell: UITableViewCell {
     
     @objc private func payeeButtonAction(_ sender: UIButton) {
         print("payeeButtonAction")
-        sender.isSelected = !(sender.isSelected)
+        
+        didTogglePayee?(self, !(sender.isSelected))
+        /// will be handled by cellForRowAt
+        ///sender.isSelected = !(sender.isSelected)
     }
     
     @objc private func sharerButtonAction(_ sender: UIButton) {
-        print("payeeButtonAction")
-        sender.isSelected = !(sender.isSelected)
+        print("sharerButtonAction")
+        ///sender.isSelected = !(sender.isSelected)
+        didToggleSharer?(self, !(sender.isSelected))
     }
-    
     
     private func setupPayeeButton() {
         payeeButton.setTitleColor(UIColor.lightGray, for: .normal)
         payeeButton.setTitleColor(UIColor.black, for: .selected)
-        
         
         payeeButton.setTitle("Payee", for: .normal)
         payeeButton.setTitle("Payee", for: .selected)

@@ -27,6 +27,44 @@ extension AddExpenseViewController: UITableViewDataSource {
             /// user indexOf etc... if let here...
             let user = self.userManager.orderedUsers[indexPath.row]
             userExpenseCell.configure(for: user, asPayee: (self.addExpenseViewModel.payee == user), asSharer: self.addExpenseViewModel.sharers.contains(user))
+            
+            
+            userExpenseCell.didTogglePayee = { (userExpenseCell, isPayee) in
+                
+                ///ToAsk: whats the preffered way to handle loose-ends like these? throw proper errors? or force-unwrap(not ideal) or do nothing and return?
+                guard let userCellIndexPath = tableView.indexPath(for: userExpenseCell) else {
+                    
+                    return
+                }
+                
+                let payeeUser = self.userManager.orderedUsers[userCellIndexPath.row]
+                
+                if(self.addExpenseViewModel.payee == payeeUser) {
+                    self.addExpenseViewModel.removePayee()
+                } else {
+                    self.addExpenseViewModel.setPayee(payeeUser)
+                }
+                
+                self.addExpenseViewModel.didChangePayee?(payeeUser)
+            }
+            
+            ///ToAsk: feeling like the the DataSource is bloating with didTogglePayee and didToggleSharer, is it preffered to have another UserCellViewModel for this type of refactoring when required?
+            userExpenseCell.didToggleSharer = { (userExpenseCell, isSharer) in
+                guard let userCellIndexPath = tableView.indexPath(for: userExpenseCell) else {
+                    return
+                }
+                
+                let shareeUser = self.userManager.orderedUsers[userCellIndexPath.row]
+                
+                if(self.addExpenseViewModel.sharers.contains(shareeUser)) {
+                    ///TODO: Handle error cases later
+                    try? self.addExpenseViewModel.removeSharer(shareeUser)
+                } else {
+                    try? self.addExpenseViewModel.addSharer(shareeUser)
+                }
+                
+                self.addExpenseViewModel.didChangeSharer?(shareeUser)
+            }
         }
         
         return tableViewCell

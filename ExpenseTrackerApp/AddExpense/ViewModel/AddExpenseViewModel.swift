@@ -10,7 +10,7 @@ import Foundation
 
 ///ToAsk: What's the most prefered way to organise an iOS-repo, there is no proven standard but I find it hard to structure my repo into proper folders/subfolder/files, less-Clean on that aspect, never settled to a particular structure, I deviate often accross projects.
 
-/// To maintain payee/sharer session
+///ToAsk: AddExpenseViewModel as struct crashes on run while selecting payee, I think this has to do something with Swift-Core fundamentals value-type read/write in a multi=threaded environment, please guide.
 internal struct AddExpenseViewModel {
     
     public private(set) var payee: User?
@@ -19,6 +19,7 @@ internal struct AddExpenseViewModel {
     ///callbacks..
     ///ToAsk: Not familiar how it happens in MVVM world, should I ask the callback/notifyPropertyChanges in the constructors itself? or an optional
     public var didChangePayee: ((User?) -> ())? = nil
+    public var didChangeSharer: ((User) -> ())? = nil
     
     ///ToAsk: Should I add callback for sharer-change so that cell reloads and the sharer-button is toggled when cellForRowat is called again, it happens by default for now, is it good to have it just in-case if there is a non-toggleable control? will it not be a over-head to reload other visible-rows also when a single sharer is added? commenting the following it for now
     ///public var didChangeSharers: (() -> ())? = nil
@@ -51,7 +52,6 @@ internal struct AddExpenseViewModel {
             throw AddExpenseViewModelErrors.RemoveSharerError.sharerNotAvailable
         }
     }
-    
 }
 
 ///ToAsk: I have not yet explored/concentrated much on Error-modules yet, could seem weak/loose for now. Any tips would defenitely help.

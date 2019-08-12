@@ -43,6 +43,14 @@ class AddExpenseViewController: UIViewController {
             
             self.tableView.reloadRows(at: indexPathsForVisibleRows, with: .none)
         }
+        
+        self.addExpenseViewModel.didChangeSharer = { (sharer) in
+            guard let sharerUserIndex = self.userManager.orderedUsers.firstIndex(of: sharer) else {
+                return
+            }
+            
+            self.tableView.reloadRows(at: [IndexPath(row: sharerUserIndex, section: 0)], with: .none)
+        }
     }
     
     

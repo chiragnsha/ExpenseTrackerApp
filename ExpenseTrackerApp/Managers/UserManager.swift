@@ -16,6 +16,7 @@ struct UserManager {
             orderedUsers = allUsers.sorted(by: { (user1, user2) -> Bool in
                 ///ToAsk: Nice TIL, is there any particular term that defines this util-pattern? Local-Closures
                 let op: (User) -> Int = { user in
+                    ///ToAsk: Do you trust force-unwrap in specific cases, bcz I dont prefer force-unwraps at all, eventhough its provided by the language itself.
                     return Int(String(user.name.split(separator: " ").last!))!
                 }
                 return op(user1) < op(user2)
