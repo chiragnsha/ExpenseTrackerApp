@@ -15,9 +15,6 @@ enum ExpenseManagerError: Error {
 /// hold all expenses
 struct ExpenseManager {
     var expenses: Set<Expense> = Set<Expense>()
-}
-
-extension ExpenseManager {
     
     func netExpense(for user: User) throws -> Double {
         return try expenses.reduce(into: 0.0, { (result, expense) in
