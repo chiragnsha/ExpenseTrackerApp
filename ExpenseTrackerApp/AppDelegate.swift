@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         /// load with add expense initailly
         
-        self.window = UIWindow.init(frame: UIScreen.main.bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         
         /// load app-dependencies
         

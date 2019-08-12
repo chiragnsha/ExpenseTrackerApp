@@ -16,7 +16,7 @@ class AddExpenseViewController: UIViewController {
     
     /// UIView
     private var tableView: UITableView
-    internal var expenseInputView: (UIView & ExpenseInputProtocol) = AddExpenseHeaderView.init(frame: .zero)
+    internal var expenseInputView: (UIView & ExpenseInputProtocol) = AddExpenseHeaderView(frame: .zero)
     
     init(expenseManager: ExpenseManager, userManager: UserManager) {
         let barAppearance = UINavigationBar.appearance()

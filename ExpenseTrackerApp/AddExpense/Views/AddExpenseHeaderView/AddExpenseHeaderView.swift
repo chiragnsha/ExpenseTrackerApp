@@ -11,7 +11,7 @@ import UIKit
 
 class AddExpenseHeaderView: UIView {
     var amountLabel: UILabel = {
-       let amountLabel = UILabel.init(frame: .zero)
+       let amountLabel = UILabel(frame: .zero)
         
         
         
@@ -19,19 +19,19 @@ class AddExpenseHeaderView: UIView {
     }()
     
     var expenseLabel: UILabel = {
-        let expenseLabel = UILabel.init(frame: .zero)
+        let expenseLabel = UILabel(frame: .zero)
         
         return expenseLabel
     }()
     
     var expenseAmountTextField: UITextField = {
-        let expenseAmountTextField = UITextField.init(frame: .zero)
+        let expenseAmountTextField = UITextField(frame: .zero)
         
         return expenseAmountTextField
     }()
     
     var expenseNameTextField: UITextField = {
-        let expenseNameTextField = UITextField.init(frame: .zero)
+        let expenseNameTextField = UITextField(frame: .zero)
         
         return expenseNameTextField
     }()

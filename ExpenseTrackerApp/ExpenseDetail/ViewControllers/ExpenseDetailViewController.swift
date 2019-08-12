@@ -14,7 +14,7 @@ class ExpenseDetailViewController: UIViewController {
     private var expenseManager: ExpenseManager!
     private let userManager: UserManager
     
-    internal var tableView: UITableView = UITableView.init(frame: .zero)
+    internal var tableView: UITableView = UITableView(frame: .zero)
     
     init(expenseManager: ExpenseManager, userManager: UserManager = UserManager()) {
     

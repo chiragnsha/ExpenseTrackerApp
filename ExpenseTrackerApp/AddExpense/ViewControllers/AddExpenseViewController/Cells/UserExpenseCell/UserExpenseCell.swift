@@ -15,9 +15,14 @@ class UserExpenseCell: UITableViewCell {
     private var sharerButton: UIButton
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        userLabel = UILabel.init(frame: .zero)
-        payeeButton = UIButton.init(frame: .zero)
-        sharerButton = UIButton.init(frame: .zero)
+        
+        ///ToAsk: I generally follow .init() pattern for quick-constructor readability reference, with super.init(...) as the source/reference point for this pattern
+        
+        //userLabel = UILabel.init(frame: .zero)
+        userLabel = UILabel(frame: .zero)
+
+        payeeButton = UIButton(frame: .zero)
+        sharerButton = UIButton(frame: .zero)
         
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         
