@@ -9,11 +9,7 @@
 import Foundation
 
 extension AddExpenseHeaderView: ExpenseInputProtocol {
-    func getExpenseName() -> String? {
-        return self.expenseNameTextField.text
-    }
-    
-    func getExpenseAmount() -> String? {
-        return self.expenseAmountTextField.text
+    func getData() -> (amount: Double?, expenseDesc: String?) {
+        return (Double(expenseAmountTextField.text ?? ""), expenseNameTextField.text)
     }
 }

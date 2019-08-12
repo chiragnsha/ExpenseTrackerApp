@@ -93,16 +93,16 @@ class AddExpenseViewController: UIViewController {
     
     @objc func addExpense(_ sender: UIButton) {
         
+        let data = expenseInputView.getData()
+        
         /// validate input later...
-        guard let expenseName = expenseInputView.getExpenseName() else {
+        guard let expenseName = data.expenseDesc else {
             //// throw error later...
             self.showError(error: SimpleError(errorTitle: "ExpenseName is invalid", errorMessage: "Check Name of the expense"))
             return
         }
         
-        guard let expenseAmount = expenseInputView.getExpenseAmount(),
-            let expenseamount = Double.init(expenseAmount) else {
-                
+        guard let expenseAmount = data.amount else {
             self.showError(error: SimpleError(errorTitle: "ExpenseAmount is invalid", errorMessage: "Check amount of the expense"))
             return
         }
@@ -139,7 +139,7 @@ class AddExpenseViewController: UIViewController {
         }
         
         
-        let expense = Expense.init(expenseID: UUID.init(), expenseName: expenseName, expenseAmount: expenseamount, payee: payee, involvedUsers: Set.init(sharers))
+        let expense = Expense.init(expenseID: UUID.init(), expenseName: expenseName, expenseAmount: expenseAmount, payee: payee, involvedUsers: Set.init(sharers))
         
         self.expenseManager.addExpense(expense)
         
