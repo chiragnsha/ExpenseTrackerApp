@@ -29,7 +29,6 @@
 		6F4FDA5722FE9F4500D7086F /* ExpenseInputProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA5622FE9F4500D7086F /* ExpenseInputProtocol.swift */; };
 		6F4FDA5922FE9F9100D7086F /* AddExpenseHeaderView+ExpenseInputProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA5822FE9F9100D7086F /* AddExpenseHeaderView+ExpenseInputProtocol.swift */; };
 		6F4FDA5C22FEA08A00D7086F /* AddExpenseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA5B22FEA08A00D7086F /* AddExpenseProtocol.swift */; };
-		6F4FDA5E22FEA0B700D7086F /* ExpenseManager+AddExpenseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA5D22FEA0B700D7086F /* ExpenseManager+AddExpenseProtocol.swift */; };
 		6F4FDA6022FEA11A00D7086F /* ExpenseCreatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA5F22FEA11A00D7086F /* ExpenseCreatorProtocol.swift */; };
 		6F4FDA6522FEA3FF00D7086F /* ExpenseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA6422FEA3FF00D7086F /* ExpenseDetailViewController.swift */; };
 		6F4FDA6722FF416100D7086F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA6622FF416100D7086F /* UIImage.swift */; };
@@ -62,7 +61,6 @@
 		6F4FDA5622FE9F4500D7086F /* ExpenseInputProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseInputProtocol.swift; sourceTree = "<group>"; };
 		6F4FDA5822FE9F9100D7086F /* AddExpenseHeaderView+ExpenseInputProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddExpenseHeaderView+ExpenseInputProtocol.swift"; sourceTree = "<group>"; };
 		6F4FDA5B22FEA08A00D7086F /* AddExpenseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseProtocol.swift; sourceTree = "<group>"; };
-		6F4FDA5D22FEA0B700D7086F /* ExpenseManager+AddExpenseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpenseManager+AddExpenseProtocol.swift"; sourceTree = "<group>"; };
 		6F4FDA5F22FEA11A00D7086F /* ExpenseCreatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreatorProtocol.swift; sourceTree = "<group>"; };
 		6F4FDA6422FEA3FF00D7086F /* ExpenseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetailViewController.swift; sourceTree = "<group>"; };
 		6F4FDA6622FF416100D7086F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 			children = (
 				6F4FDA5A22FEA07D00D7086F /* Protocols */,
 				6F4FDA3022FE89AC00D7086F /* ExpenseManager.swift */,
-				6F4FDA5D22FEA0B700D7086F /* ExpenseManager+AddExpenseProtocol.swift */,
 			);
 			path = ExpenseManager;
 			sourceTree = "<group>";
@@ -413,7 +410,6 @@
 				6F4FDA5922FE9F9100D7086F /* AddExpenseHeaderView+ExpenseInputProtocol.swift in Sources */,
 				6F4FDA6522FEA3FF00D7086F /* ExpenseDetailViewController.swift in Sources */,
 				6F4FDA3F22FE8CD100D7086F /* AddExpenseViewController+UITableViewDataSource.swift in Sources */,
-				6F4FDA5E22FEA0B700D7086F /* ExpenseManager+AddExpenseProtocol.swift in Sources */,
 				D18C515723012D230049F05F /* UserManager.swift in Sources */,
 				6F4FDA4122FE8D0B00D7086F /* AddExpenseHeaderView.swift in Sources */,
 				6F4FDA6022FEA11A00D7086F /* ExpenseCreatorProtocol.swift in Sources */,

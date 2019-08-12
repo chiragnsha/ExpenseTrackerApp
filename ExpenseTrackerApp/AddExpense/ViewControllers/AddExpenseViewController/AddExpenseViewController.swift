@@ -11,8 +11,7 @@ import UIKit
 class AddExpenseViewController: UIViewController {
 
     // Managers
-    internal var expenseManager: ExpenseManager!
-    
+    internal var expenseManager: ExpenseManager
     internal let userManager: UserManager
     
     /// UIView

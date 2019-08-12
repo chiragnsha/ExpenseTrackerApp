@@ -17,7 +17,6 @@ struct ExpenseManager {
     var expenses: Set<Expense> = Set<Expense>()
 }
 
-
 extension ExpenseManager {
     
     func netExpense(for user: User) throws -> Double {
@@ -39,5 +38,15 @@ extension ExpenseManager {
         } else {
             return 0.0
         }
+    }
+}
+
+extension ExpenseManager: AddExpenseProtocol {
+    
+    mutating func addExpense(_ expense: Expense) {
+        /// validate expense
+        /// implement throws
+        
+        self.expenses.insert(expense)
     }
 }
