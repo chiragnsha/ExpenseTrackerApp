@@ -45,7 +45,7 @@ extension AddExpenseViewController: UITableViewDataSource {
                     self.addExpenseViewModel.setPayee(payeeUser)
                 }
                 
-                self.addExpenseViewModel.didChangePayee?(payeeUser)
+                //self.addExpenseViewModel.didChangePayee?(payeeUser)
             }
             
             ///ToAsk: feeling like the the DataSource is bloating with didTogglePayee and didToggleSharer, is it preffered to have another UserCellViewModel for this type of refactoring when required?
@@ -63,7 +63,7 @@ extension AddExpenseViewController: UITableViewDataSource {
                     try? self.addExpenseViewModel.addSharer(shareeUser)
                 }
                 
-                self.addExpenseViewModel.didChangeSharer?(shareeUser)
+                //self.addExpenseViewModel.didChangeSharer?(shareeUser)
             }
         }
         

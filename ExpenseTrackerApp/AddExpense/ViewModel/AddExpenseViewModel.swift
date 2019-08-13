@@ -11,7 +11,7 @@ import Foundation
 ///ToAsk: What's the most prefered way to organise an iOS-repo, there is no proven standard but I find it hard to structure my repo into proper folders/subfolder/files, less-Clean on that aspect, never settled to a particular structure, I deviate often accross projects.
 
 ///ToAsk: AddExpenseViewModel as struct crashes on run while selecting payee, I think this has to do something with Swift-Core fundamentals value-type read/write in a multi=threaded environment, please guide.
-internal struct AddExpenseViewModel {
+internal class AddExpenseViewModel {
     
     public private(set) var payee: User?
     public private(set) var sharers: Set<User>
@@ -29,25 +29,25 @@ internal struct AddExpenseViewModel {
         self.sharers = sharers
     }
     
-    mutating func setPayee(_ payee: User) {
+    func setPayee(_ payee: User) {
         self.payee = payee
         
         didChangePayee?(self.payee)
     }
     
-    mutating func removePayee() {
+    func removePayee() {
         self.payee = nil
         
         didChangePayee?(nil)
     }
     
-    mutating func addSharer(_ sharee: User) throws {
+    func addSharer(_ sharee: User) throws {
         guard self.sharers.insert(sharee).inserted == true else {
             throw AddExpenseViewModelErrors.AddSharerError.sharerExists
         }
     }
     
-    mutating func removeSharer(_ sharee: User) throws {
+    func removeSharer(_ sharee: User) throws {
         guard let _ = self.sharers.remove(sharee) else {
             throw AddExpenseViewModelErrors.RemoveSharerError.sharerNotAvailable
         }
