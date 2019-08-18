@@ -11,5 +11,7 @@ import UIKit
 
 extension AddExpenseViewController: UITableViewDelegate {
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.view.endEditing(true)
+    }
 }

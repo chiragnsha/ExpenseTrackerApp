@@ -150,7 +150,7 @@ class AddExpenseViewController: UIViewController {
         self.title = "Expense"
     }
     
-    @objc private func infoButtonAction(_ sender: UIButton) { self.navigationController?.pushViewController(ExpenseDetailViewController.init(expenseManager: self.expenseManager), animated: true)
+    @objc private func infoButtonAction(_ sender: UIButton) { self.navigationController?.pushViewController(ExpenseDetailViewController.init(expenseManager: self.expenseManager, userManager: self.userManager), animated: true)
     }
     
     private func showError(error: ISimpleError) {

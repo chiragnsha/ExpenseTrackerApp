@@ -10,6 +10,7 @@ import Foundation
 
 enum ExpenseManagerError: Error {
     case invalidUser
+    case invalidExpenseQuery
 }
 
 /// hold all expenses
@@ -18,7 +19,9 @@ struct ExpenseManager {
     
     func netExpense(for user: User) throws -> Double {
         return try expenses.reduce(into: 0.0, { (result, expense) in
-            result += try self.expenseShare(for: user, in: expense)
+            if(expense.involvesuser(user) == true) {
+                result += try self.expenseShare(for: user, in: expense)
+            }
         })
     }
     
@@ -30,10 +33,15 @@ struct ExpenseManager {
         
         let expenseShare = expense.expenseAmount / Double.init(expense.involvedUsers.count)
         
-        if(expense.involvedUsers.contains(user) == true) {
+        /// user is payee and sharer
+        if(expense.payee == user && expense.involvedUsers.contains(user)) {
+            return expenseShare - expense.expenseAmount
+        } else if (expense.payee == user) { /// user is payee
+            return -(expense.expenseAmount)
+        } else if(expense.involvedUsers.contains(user)) {/// user is sharer
             return expenseShare
         } else {
-            return 0.0
+            throw ExpenseManagerError.invalidExpenseQuery
         }
     }
 }

@@ -28,6 +28,4 @@ extension Expense {
     func involvesuser(_ user: User) -> Bool {
         return (self.payee == user) || self.involvedUsers.contains(user)
     }
-    
-    
 }
