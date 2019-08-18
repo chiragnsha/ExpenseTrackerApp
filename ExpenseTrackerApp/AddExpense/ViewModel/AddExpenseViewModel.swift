@@ -45,12 +45,16 @@ internal class AddExpenseViewModel {
         guard self.sharers.insert(sharee).inserted == true else {
             throw AddExpenseViewModelErrors.AddSharerError.sharerExists
         }
+        
+        didChangeSharer?(sharee)
     }
     
     func removeSharer(_ sharee: User) throws {
         guard let _ = self.sharers.remove(sharee) else {
             throw AddExpenseViewModelErrors.RemoveSharerError.sharerNotAvailable
         }
+        
+        didChangeSharer?(sharee)
     }
 }
 

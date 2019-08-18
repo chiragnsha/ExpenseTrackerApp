@@ -82,6 +82,8 @@ class AddExpenseViewController: UIViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.cellIdentifier)
         
+        tableView.register(UINib.init(nibName: "UserExpenseViewCell", bundle: nil), forCellReuseIdentifier: UserExpenseViewCell.cellIdentifier)
+        
         tableView.register(UserExpenseCell.self, forCellReuseIdentifier: UserExpenseCell.cellIdentifier)
         
         self.tableView.dataSource = self

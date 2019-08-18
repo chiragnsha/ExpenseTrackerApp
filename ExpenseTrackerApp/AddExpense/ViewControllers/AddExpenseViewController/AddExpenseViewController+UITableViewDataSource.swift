@@ -16,11 +16,16 @@ extension AddExpenseViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: UserExpenseCell.cellIdentifier, for: indexPath)
+        var tableViewCell: UITableViewCell
+        ///ToAsk: What's the most elegant way of doing the following deque based on indexpath
         
-        ///check for index etc....
-        ///tableViewCell.textLabel?.text = self.expenseManager.ordererdUsers[indexPath.row].name
+        ///non-storyboard cell
+        //tableViewCell = tableView.dequeueReusableCell(withIdentifier: UserExpenseCell.cellIdentifier, for: indexPath)
         
+        ///storyboard cell
+        tableViewCell = tableView.dequeueReusableCell(withIdentifier: UserExpenseViewCell.cellIdentifier, for: indexPath)
+        
+        ///non-storyboardCell
         if let userExpenseCell = tableViewCell as? UserExpenseCell {
             userExpenseCell.configureView()
             
@@ -62,7 +67,49 @@ extension AddExpenseViewController: UITableViewDataSource {
                 } else {
                     try? self.addExpenseViewModel.addSharer(shareeUser)
                 }
+                //self.addExpenseViewModel.didChangeSharer?(shareeUser)
+            }
+        }
+        
+        ///storyboardCell
+        if let userExpenseViewCell = tableViewCell as? UserExpenseViewCell {
+            
+            userExpenseViewCell.selectionStyle = .none
+            
+            /// user indexOf etc... if let here...
+            let user = self.userManager.orderedUsers[indexPath.row]
+            userExpenseViewCell.configure(for: user, asPayee: (self.addExpenseViewModel.payee == user), asSharer: self.addExpenseViewModel.sharers.contains(user))
+            
+            userExpenseViewCell.didTogglePayee = { (userExpenseCell, isPayee) in
                 
+                ///ToAsk: whats the preffered way to handle loose-ends like these? throw proper errors? or force-unwrap(not ideal) or do nothing and return?
+                guard let userCellIndexPath = tableView.indexPath(for: userExpenseCell) else {
+                    
+                    return
+                }
+                
+                let payeeUser = self.userManager.orderedUsers[userCellIndexPath.row]
+                
+                if(self.addExpenseViewModel.payee == payeeUser) {
+                    self.addExpenseViewModel.removePayee()
+                } else {
+                    self.addExpenseViewModel.setPayee(payeeUser)
+                }
+            }
+            
+            userExpenseViewCell.didToggleSharer = { (userExpenseCell, isSharer) in
+                guard let userCellIndexPath = tableView.indexPath(for: userExpenseCell) else {
+                    return
+                }
+                
+                let shareeUser = self.userManager.orderedUsers[userCellIndexPath.row]
+                
+                if(self.addExpenseViewModel.sharers.contains(shareeUser)) {
+                    ///TODO: Handle error cases later
+                    try? self.addExpenseViewModel.removeSharer(shareeUser)
+                } else {
+                    try? self.addExpenseViewModel.addSharer(shareeUser)
+                }
                 //self.addExpenseViewModel.didChangeSharer?(shareeUser)
             }
         }

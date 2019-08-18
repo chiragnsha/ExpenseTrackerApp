@@ -8,14 +8,14 @@
 
 import UIKit
 
-class UserExpenseCell: UITableViewCell {
+class UserExpenseCell: UITableViewCell, UserExpenseInputProtocol {
 
     private var userLabel: UILabel
     private var payeeButton: UIButton
     private var sharerButton: UIButton
     
-    public var didTogglePayee: ((UserExpenseCell, Bool) -> ())? = nil
-    public var didToggleSharer: ((UserExpenseCell, Bool) -> ())? = nil
+    public var didTogglePayee: ((UITableViewCell, Bool) -> ())? = nil
+    public var didToggleSharer: ((UITableViewCell, Bool) -> ())? = nil
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         

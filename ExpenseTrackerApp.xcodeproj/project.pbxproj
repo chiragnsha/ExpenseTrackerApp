@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6F01BF0D2301DC120014B73F /* AddExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F01BF0C2301DC120014B73F /* AddExpenseViewModel.swift */; };
+		6F0B1D4C230801F40039520C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F0B1D4B230801F40039520C /* Images.xcassets */; };
+		6F0B1D4F230917DC0039520C /* UserExpenseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B1D4E230917DC0039520C /* UserExpenseViewProtocol.swift */; };
+		6F343DEF230462050044E3D9 /* UserExpenseViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F343DEE230462050044E3D9 /* UserExpenseViewCell.xib */; };
+		6F343DF1230462530044E3D9 /* CheckBoxButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F343DF0230462530044E3D9 /* CheckBoxButton.xib */; };
+		6F343DF3230465020044E3D9 /* UserExpenseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F343DF2230465020044E3D9 /* UserExpenseViewCell.swift */; };
 		6F4FDA1322FE87A600D7086F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA1222FE87A600D7086F /* AppDelegate.swift */; };
 		6F4FDA1522FE87A600D7086F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4FDA1422FE87A600D7086F /* ViewController.swift */; };
 		6F4FDA1822FE87A600D7086F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F4FDA1622FE87A600D7086F /* Main.storyboard */; };
@@ -38,6 +43,11 @@
 
 /* Begin PBXFileReference section */
 		6F01BF0C2301DC120014B73F /* AddExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewModel.swift; sourceTree = "<group>"; };
+		6F0B1D4B230801F40039520C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6F0B1D4E230917DC0039520C /* UserExpenseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExpenseViewProtocol.swift; sourceTree = "<group>"; };
+		6F343DEE230462050044E3D9 /* UserExpenseViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserExpenseViewCell.xib; sourceTree = "<group>"; };
+		6F343DF0230462530044E3D9 /* CheckBoxButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckBoxButton.xib; sourceTree = "<group>"; };
+		6F343DF2230465020044E3D9 /* UserExpenseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExpenseViewCell.swift; sourceTree = "<group>"; };
 		6F4FDA0F22FE87A600D7086F /* ExpenseTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4FDA1222FE87A600D7086F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F4FDA1422FE87A600D7086F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,9 +97,18 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		6F0B1D4D2309174A0039520C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6F0B1D4E230917DC0039520C /* UserExpenseViewProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		6F4FDA0622FE87A600D7086F = {
 			isa = PBXGroup;
 			children = (
+				6F0B1D4B230801F40039520C /* Images.xcassets */,
 				6F4FDA1122FE87A600D7086F /* ExpenseTrackerApp */,
 				6F4FDA1022FE87A600D7086F /* Products */,
 			);
@@ -221,6 +240,7 @@
 		6F4FDA3C22FE8CB100D7086F /* AddExpenseViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6F0B1D4D2309174A0039520C /* Protocols */,
 				6F4FDA4222FE92DA00D7086F /* Cells */,
 				6F4FDA3722FE8BDD00D7086F /* AddExpenseViewController.swift */,
 				6F4FDA3E22FE8CD100D7086F /* AddExpenseViewController+UITableViewDataSource.swift */,
@@ -251,6 +271,9 @@
 			children = (
 				6F4FDA4322FE932E00D7086F /* UserExpenseCell.swift */,
 				6F4FDA4922FE93C400D7086F /* UserExpenseCell+ViewProtocol.swift */,
+				6F343DEE230462050044E3D9 /* UserExpenseViewCell.xib */,
+				6F343DF0230462530044E3D9 /* CheckBoxButton.xib */,
+				6F343DF2230465020044E3D9 /* UserExpenseViewCell.swift */,
 			);
 			path = UserExpenseCell;
 			sourceTree = "<group>";
@@ -390,6 +413,9 @@
 			files = (
 				6F4FDA1D22FE87AB00D7086F /* LaunchScreen.storyboard in Resources */,
 				6F4FDA1A22FE87AB00D7086F /* Assets.xcassets in Resources */,
+				6F343DEF230462050044E3D9 /* UserExpenseViewCell.xib in Resources */,
+				6F0B1D4C230801F40039520C /* Images.xcassets in Resources */,
+				6F343DF1230462530044E3D9 /* CheckBoxButton.xib in Resources */,
 				6F4FDA1822FE87A600D7086F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,7 +441,9 @@
 				6F4FDA3122FE89AC00D7086F /* ExpenseManager.swift in Sources */,
 				6F4FDA4A22FE93C400D7086F /* UserExpenseCell+ViewProtocol.swift in Sources */,
 				6F4FDA2D22FE892700D7086F /* Expense.swift in Sources */,
+				6F343DF3230465020044E3D9 /* UserExpenseViewCell.swift in Sources */,
 				6F4FDA6522FEA3FF00D7086F /* ExpenseDetailViewController.swift in Sources */,
+				6F0B1D4F230917DC0039520C /* UserExpenseViewProtocol.swift in Sources */,
 				6F4FDA3F22FE8CD100D7086F /* AddExpenseViewController+UITableViewDataSource.swift in Sources */,
 				D18C515723012D230049F05F /* UserManager.swift in Sources */,
 				6F01BF0D2301DC120014B73F /* AddExpenseViewModel.swift in Sources */,
